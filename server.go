@@ -13,7 +13,7 @@ type Server struct{}
 
 type Student struct {
 	Name    string
-	Subject map[string]uint
+	Subject map[string]float64
 }
 
 var l = list.New()
@@ -37,7 +37,7 @@ func (this *Server) AddGrade(args *args.Args, reply *string) error {
 	if validate(args) {
 		result = "La calificación ya estaba asignada y no ha sido modificada..."
 	} else {
-		myStudent := Student{Name: args.Name, Subject: map[string]uint{}}
+		myStudent := Student{Name: args.Name, Subject: map[string]float64{}}
 		myStudent.Subject[args.Subject] = args.Grade
 
 		l.PushBack(myStudent)
@@ -47,9 +47,9 @@ func (this *Server) AddGrade(args *args.Args, reply *string) error {
 	return nil
 }
 
-func (this *Server) StudentAverage(args string, reply *uint) error {
-	total := uint(0)
-	cont := uint(0)
+func (this *Server) StudentAverage(args string, reply *float64) error {
+	total := float64(0)
+	cont := float64(0)
 	for e := l.Front(); e != nil; e = e.Next() {
 		myElement := e.Value.(Student)
 		if myElement.Name == args {
@@ -63,9 +63,9 @@ func (this *Server) StudentAverage(args string, reply *uint) error {
 	return nil
 }
 
-func (this *Server) GeneralAverage(args string, reply *uint) error {
-	total := uint(0)
-	cont := uint(0)
+func (this *Server) GeneralAverage(args string, reply *float64) error {
+	total := float64(0)
+	cont := float64(0)
 	for e := l.Front(); e != nil; e = e.Next() {
 		myElement := e.Value.(Student)
 		for _, value := range myElement.Subject {
@@ -77,9 +77,9 @@ func (this *Server) GeneralAverage(args string, reply *uint) error {
 	return nil
 }
 
-func (this *Server) SubjectAverage(args string, reply *uint) error {
-	total := uint(0)
-	cont := uint(0)
+func (this *Server) SubjectAverage(args string, reply *float64) error {
+	total := float64(0)
+	cont := float64(0)
 	for e := l.Front(); e != nil; e = e.Next() {
 		myElement := e.Value.(Student)
 		for key, value := range myElement.Subject {

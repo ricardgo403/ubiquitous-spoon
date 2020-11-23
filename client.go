@@ -36,7 +36,7 @@ func client() {
 			fmt.Scanln(&subject)
 			subject = strings.ToLower(subject)
 
-			var grade uint
+			var grade float64
 			fmt.Print("Calificación: ")
 			fmt.Scanln(&grade)
 
@@ -59,7 +59,7 @@ func client() {
 
 			args := name + " " + lastname
 
-			var result uint
+			var result float64
 			err = c.Call("Server.StudentAverage", args, &result)
 			if err != nil {
 				fmt.Println(err)
@@ -67,7 +67,7 @@ func client() {
 				fmt.Println("Server.StudentAverage =", result)
 			}
 		case 3:
-			var result uint
+			var result float64
 			err = c.Call("Server.GeneralAverage", "", &result)
 			if err != nil {
 				fmt.Println(err)
@@ -80,7 +80,7 @@ func client() {
 			fmt.Scanln(&subject)
 			subject = strings.ToLower(subject)
 
-			var result uint
+			var result float64
 			err = c.Call("Server.SubjectAverage", subject, &result)
 			if err != nil {
 				fmt.Println(err)
