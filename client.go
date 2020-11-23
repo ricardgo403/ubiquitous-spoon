@@ -8,12 +8,6 @@ import (
 	"./args"
 )
 
-// type Args struct {
-// 	Name    string
-// 	Subject string
-// 	Grade   uint
-// }
-
 func client() {
 	c, err := rpc.Dial("tcp", ":9999")
 	if err != nil {

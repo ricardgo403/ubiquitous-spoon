@@ -11,12 +11,6 @@ import (
 
 type Server struct{}
 
-// type Args struct {
-// 	Name    string
-// 	Subject string
-// 	Grade   uint
-// }
-
 type Student struct {
 	Name    string
 	Subject map[string]uint
